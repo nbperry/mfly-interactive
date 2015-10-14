@@ -25,7 +25,7 @@ Enter the following in the terminal
 $ npm install mfly-interactive --save-dev
 ```
 
-Example of how to set up a BrowserSync server. The same can be done with a connect server as well. Here, the middleware provided by `mfly-interactive` can be supplied to the node server.
+Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) server. The same can be done with any connect server as well. Here, the middleware provided by `mfly-interactive` can be supplied to your server.
 ```javascript
 var browserSync = require("browser-sync")
 var viewerMiddleware = require('mfly-interactive')({
