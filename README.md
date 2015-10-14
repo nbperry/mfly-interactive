@@ -19,7 +19,7 @@ Run in the folder where the interactive is located
 $ mfly-interactive --url https://viewer.mediafly.com/interactives/interactive/9cf282320e6340ee8b830e5376d54531product184614/1441745710d55945/index.html
 ```
 
-## Option 2: Local install (if you gulp, grunt, etc. with a static file server)
+## Option 2: Local install (if you have gulp, grunt, etc. with a static file server)
 Enter the following in the terminal
 ```bash
 $ npm install mfly-interactive --save-dev
