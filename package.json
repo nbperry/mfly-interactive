@@ -1,0 +1,18 @@
+{
+  "name": "mfly-interactive",
+  "version": "0.0.1",
+  "description": "Allows local development of interactives using real data.",
+  "main": "lib/proxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nachiket Mehta",
+  "license": "ISC",
+  "dependencies": {
+    "connect-modrewrite": "^0.8.2",
+    "yargs": "^3.27.0"
+  },
+  "bin": {
+    "mfly-interactive": "bin/index.js"
+  }
+}
