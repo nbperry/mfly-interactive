@@ -1,5 +1,12 @@
-# Mediafly Interactives proxy
-Allows local development of interactives using real data.
+# Mediafly Interactives
+Allows development of Mediafly Interactives using real data.
+
+To start developing a new interactive:
+1. Upload the interactive in Airship.
+2. Get the URL of the interactive from Viewer.
+3. Use that URL with this tool.
+
+**Please note that local changes to the interactive will not update the uploaded interactive. When finished making changes, you will need to upload the interactive in Airship again.**
 
 ## Installing
 Before running, you must install and configure the following one-time dependencies:
@@ -16,7 +23,7 @@ $ npm install -g browser-sync mfly-interactive
 
 Run in the folder where the interactive is located
 ```bash
-$ mfly-interactive --url https://viewer.mediafly.com/interactives/interactive/9cf282320e6340ee8b830e5376d54531product184614/1441745710d55945/index.html
+$ mfly-interactive --url https://viewer.mediafly.com/.../index.html
 ```
 
 ## Option 2: Local install (if you have gulp, grunt, etc. with a static file server)
@@ -29,7 +36,7 @@ Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) 
 ```javascript
 var browserSync = require("browser-sync")
 var viewerMiddleware = require('mfly-interactive')({
-	url: 'https://viewer.mediafly.com/interactives/interactive/9cf282320e6340ee8b830e5376d54531product184614/1441745710d55945/index.html'
+	url: 'https://viewer.mediafly.com/.../index.html'
 })
 
 browserSync({
@@ -46,5 +53,4 @@ browserSync({
 ```
 
 ## A note on HTTPS
-The BrowserSync static server that serves the interactive static files must run on HTTPS. This allows it to communicate with viewer properly.
-Ignore this warning in your browser.
+Your browser will show a warning about HTTPs. Ignore this warning.
