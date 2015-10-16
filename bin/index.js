@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 var options = require('yargs')
-	.usage('Run the interactive with the following options.')
+	.usage('Run the Interactive with the following options.')
 	.help('?')
 	.option('url', {
 		alias: 'u',
 		required: true,
-		description: 'viewer url to the interactive.',
+		description: 'viewer url to the Interactive.',
 		type: 'string'
 	})
 	.argv
