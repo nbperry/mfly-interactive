@@ -1,9 +1,9 @@
 # Mediafly Interactives
 Allows development of Mediafly Interactives using real data.
 
-To start developing a new interactive:
-1. Upload the interactive in Airship.
-2. Get the URL of the interactive from Viewer.
+To start developing a new Interactive:
+1. Upload the Interactive in Airship.
+2. Get the URL of the Interactive from Viewer.
 3. Use that URL with this tool.
 
 **Please note that local changes to the interactive will not update the uploaded interactive. When finished making changes, you will need to upload the interactive in Airship again.**
