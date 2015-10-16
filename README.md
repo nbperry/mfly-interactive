@@ -6,7 +6,7 @@ To start developing a new Interactive:
 2. Get the URL of the Interactive from Viewer.
 3. Use that URL with this tool.
 
-**Please note that local changes to the interactive will not update the uploaded interactive. When finished making changes, you will need to upload the interactive in Airship again.**
+**Please note that local changes to the Interactive will not update the uploaded Interactive. When finished making changes, you will need to upload the Interactive in Airship again.**
 
 ## Installing
 Before running, you must install and configure the following one-time dependencies:
@@ -21,7 +21,7 @@ Enter the following in the terminal
 $ npm install -g browser-sync mfly-interactive
 ```
 
-Run in the folder where the interactive is located
+Run in the folder where the Interactive is located
 ```bash
 $ mfly-interactive --url https://viewer.mediafly.com/.../index.html
 ```
