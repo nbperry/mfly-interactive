@@ -9,7 +9,10 @@
   "author": "Nachiket Mehta",
   "license": "ISC",
   "dependencies": {
+    "browser-sync": "^2.12.5",
+    "connect-inject": "^0.4.0",
     "connect-modrewrite": "^0.8.2",
+    "open": "0.0.5",
     "yargs": "^3.27.0"
   },
   "bin": {
