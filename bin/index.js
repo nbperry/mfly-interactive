@@ -23,6 +23,9 @@ var viewerMiddleware = require('../lib/middleware')({
 var exp = new RegExp('(.*)/(.*)/interactive/(.*)/index.html')
 var parts = options.url.match(exp)
 
+//Allow any SSL certificate
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
 browserSync({
 	files: './**',
 	https: true,
