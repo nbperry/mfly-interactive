@@ -4,40 +4,34 @@ var options = require('yargs')
 	.usage('Run the Interactive with the following options.')
 	.option('url', {
 		alias: 'u',
-		required: true,
+		// required: true,
 		description: 'viewer url to the Interactive.',
+		type: 'string'
+	})
+	.option('userId', {
+		description: 'airship userId.',
+		type: 'string'
+	})
+	.option('password', {
+		description: 'airship password.',
+		type: 'string'
+	})
+	.option('productId', {
+		description: 'viewer productId.',
+		type: 'string'
+	})
+	.option('itemId', {
+		description: 'airship itemId.',
 		type: 'string'
 	})
 	.argv
 
-var url = options.url
+if (options.url) {
+	//start the server
+	require('../lib/server')(options.url)	
+} else if (options.userId && options.password && options.productId && options.itemId) {
+	require('../lib/uploader')(options.userId, options.password, options.productId, options.itemId)
+} else {
+	console.log('Invalid command line options')
+} 
 
-var browserSync = require('browser-sync')
-var open = require('open')
-var guid = require('../lib/guid')()
-
-var viewerMiddleware = require('../lib/middleware')({
-	url: url
-})
-
-var exp = new RegExp('(.*)/(.*)/interactive/(.*)/index.html')
-var parts = options.url.match(exp)
-
-//Allow any SSL certificate
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-
-browserSync({
-	files: './**',
-	https: true,
-	startPath: '/' + parts[2] + '/interactive/' + parts[3] + '/index.html',
-	server: {
-		baseDir: '.',
-		middleware: [
-			viewerMiddleware
-		]
-	}
-})
-
-console.log('For weinre support, add this script tag in the index.html of your Interactive', '<script src="https://weinre.mybluemix.net/target/target-script-min.js#' + guid + '"></script>')
-
-open('https://weinre.mybluemix.net/client#' + guid)
