@@ -1,0 +1,13 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node /Users/nachiketmehta/projects/mfly-interactive/bin/index.js -u https://viewer.mediafly.com/interactives/interactive/9cf282320e6340ee8b830e5376d54531product184742/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
