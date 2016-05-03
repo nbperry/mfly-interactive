@@ -9,13 +9,9 @@
   "author": "Nachiket Mehta",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.3.6",
     "browser-sync": "^2.12.5",
-    "connect-inject": "^0.4.0",
     "connect-modrewrite": "^0.8.2",
-    "form-data": "^0.2.0",
     "request": "^2.72.0",
-    "request-debug": "^0.2.0",
     "yargs": "^3.27.0"
   },
   "bin": {

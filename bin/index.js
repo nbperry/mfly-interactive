@@ -4,7 +4,6 @@ var options = require('yargs')
 	.usage('Run the Interactive with the following options.')
 	.option('url', {
 		alias: 'u',
-		// required: true,
 		description: 'viewer url to the Interactive.',
 		type: 'string'
 	})
