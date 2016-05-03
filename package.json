@@ -1,6 +1,6 @@
 {
   "name": "mfly-interactive",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Allows local development of interactives using real data.",
   "main": "lib/proxy.js",
   "scripts": {
