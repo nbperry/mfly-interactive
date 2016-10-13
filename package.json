@@ -12,7 +12,8 @@
     "browser-sync": "^2.12.5",
     "connect-modrewrite": "^0.8.2",
     "request": "^2.72.0",
-    "yargs": "^3.27.0"
+    "yargs": "^3.27.0",
+    "zip-folder": "^1.0.0"
   },
   "bin": {
     "mfly-interactive": "bin/index.js"
