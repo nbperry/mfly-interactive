@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs')
 var path = require('path')
+var release = require('../lib/release')
 
 var configFilePath = path.join(process.cwd(), 'mfly-interactive.config.json')
 
@@ -9,6 +10,13 @@ var argv = require('yargs')
 	.command('upload', 'zip and upload to Airship', function(yargs) {
 		var options = getOptions(yargs.argv)
 		upload(options)
+	})
+	.command('release', 'create the .interactive archive', function() {
+		release(function(err) {
+			if (err) {
+				console.error(err)
+			}
+		})
 	})
 	.option('url', {
 		alias: 'u',
@@ -62,8 +70,8 @@ function serve(options) {
 
 var options = getOptions()
 
-if (options.url && !argv._.includes('upload')) {
+if (options.url && !argv._.includes('upload') && !argv._.includes('release')) {
 	serve(options)
-} else if(!argv._.includes('upload')) {
+} else if(!argv._.includes('upload') && !argv._.includes('release')) {
 	console.error('Insufficient options supplied. Please refer to the documentation at https://www.npmjs.com/package/mfly-interactive on how to supply the necessary options by creating mfly-interactive.config.json or by command line arguments.')
 } 
