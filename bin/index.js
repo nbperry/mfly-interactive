@@ -1,7 +1,15 @@
 #!/usr/bin/env node
+var fs = require('fs')
+var path = require('path')
 
-var options = require('yargs')
+var configFilePath = path.join(process.cwd(), 'mfly-interactive.config.json')
+
+var argv = require('yargs')
 	.usage('Run the Interactive with the following options.')
+	.command('upload', 'zip and upload to Airship', function(yargs) {
+		var options = getOptions(yargs.argv)
+		upload(options)
+	})
 	.option('url', {
 		alias: 'u',
 		description: 'viewer url to the Interactive.',
@@ -22,15 +30,40 @@ var options = require('yargs')
 	.option('itemId', {
 		description: 'airship itemId.',
 		type: 'string'
-	})
-	.argv
+	}).argv
 
-if (options.url) {
-	//start the server
-	require('../lib/server')(options.url)	
-} else if (options.userId && options.password && options.productId && options.itemId) {
+function getOptions() {
+	var configFileExists = false
+
+	try {
+		if (fs.statSync(configFilePath).isFile()) {
+			configFileExists = true
+		}
+	} catch (error) {}
+
+	var options = {}
+
+	if (configFileExists) {
+		options = require(configFilePath)
+	} else {
+		options = argv
+	}
+
+	return options
+}
+
+function upload(options) {
 	require('../lib/uploader')(options.userId, options.password, options.productId, options.itemId)
-} else {
-	console.log('Invalid command line options')
-} 
+}
 
+function serve(options) {
+	require('../lib/server')(options.url)
+}
+
+var options = getOptions()
+
+if (options.url && !argv._.includes('upload')) {
+	serve(options)
+} else if(!argv._.includes('upload')) {
+	console.error('Insufficient options supplied. Please refer to the documentation at https://www.npmjs.com/package/mfly-interactive on how to supply the necessary options by creating mfly-interactive.config.json or by command line arguments.')
+} 

@@ -1,6 +1,5 @@
 # Mediafly Interactives
 
-
 ## Developing an Interactive in the browser:
 
 To start developing a new Interactive:
@@ -62,7 +61,7 @@ browserSync({
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
 
 ```
-$ mfly-interactive --user-id {userId} --password {password} --productId {productId} --itemId {itemId}
+$ mfly-interactive upload --user-id {userId} --password {password} --product-id {productId} --item-id {itemId}
 ```
 
 Here is how to retrieve the arguments needed for the command above:
@@ -72,6 +71,19 @@ Here is how to retrieve the arguments needed for the command above:
 - `productId`: The ID of your Airship product/content source.  This is the same as the content source slug.
 - `itemId`: This is the ID of the Interactive in Airship.
 
+
+## Configuring with mfly-interactive.config.json
+
+Instead of supplying command line arguments to mfly-interactive, you can also choose to use a config file. Place the file `mfly-interactive.config.json` at the root of your Interactive next to the `index.html` file. Here are all the properties that should could be included in this file:
+
+```
+{
+	"url": "https://viewer.mediafly.com/interactives/interactive/9cf282320e6340ee8b830e5376d54531product236750/index.html",
+	"userId": "john@doe.com",
+	"password": "password",
+	"itemId": "{AIRSHIP ITEM ID}"
+}
+```
 
 ## A note on HTTPS
 Your browser will show a warning about HTTPs. Ignore this warning.
