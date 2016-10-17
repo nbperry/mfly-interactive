@@ -23,6 +23,23 @@ var argv = require('yargs')
 		description: 'viewer url to the Interactive.',
 		type: 'string'
 	})
+	.option('mcode', {
+		description: 'Company code from Viewer',
+		type: 'string'
+	})
+	.option('ip', {
+		description: "Your machine's IP address",
+		type: 'string'
+	})
+	.option('slug', {
+		description: 'The ID of the Interactive in Viewer',
+		type: 'string'
+	})
+	.option('viewerDomain', {
+		description: 'Viewer domain to proxy to',
+		type: 'string',
+		default: 'https://viewer.mediafly.com'
+	})
 	.option('userId', {
 		description: 'airship userId.',
 		type: 'string'
@@ -49,7 +66,7 @@ function getOptions() {
 		}
 	} catch (error) {}
 
-	var options = {}
+	var options
 
 	if (configFileExists) {
 		options = require(configFilePath)
@@ -57,21 +74,32 @@ function getOptions() {
 		options = argv
 	}
 
+	if (!options.viewerDomain) {
+		options.viewerDomain = argv.viewerDomain
+	}
+
 	return options
 }
+
+var options = getOptions()
 
 function upload(options) {
 	require('../lib/uploader')(options.userId, options.password, options.productId, options.itemId)
 }
 
 function serve(options) {
-	require('../lib/server')(options.url)
+	console.log('options', options)
+	require('../lib/server')(options)
 }
 
-var options = getOptions()
+var hasSubCommand = argv._.includes('upload') || argv._.includes('release')
 
-if (options.url && !argv._.includes('upload') && !argv._.includes('release')) {
+function canServe(options) {
+	return options.url || (options.slug && options.viewerDomain)
+}
+
+if (canServe) {
 	serve(options)
-} else if(!argv._.includes('upload') && !argv._.includes('release')) {
+} else if(!hasSubCommand) {
 	console.error('Insufficient options supplied. Please refer to the documentation at https://www.npmjs.com/package/mfly-interactive on how to supply the necessary options by creating mfly-interactive.config.json or by command line arguments.')
 } 
