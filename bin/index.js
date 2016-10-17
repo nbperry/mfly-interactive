@@ -88,7 +88,6 @@ function upload(options) {
 }
 
 function serve(options) {
-	console.log('options', options)
 	require('../lib/server')(options)
 }
 
