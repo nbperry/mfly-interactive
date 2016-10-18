@@ -18,7 +18,7 @@ var argv = require('yargs')
 	.command('serve', 'Serves it up', function() {
 		serve()
 	})
-	.command('upload', 'Create release and upload to Airship', function() {
+	.command('publish', 'Create release and upload to Airship', function() {
 		upload()
 	})
 	.command('release', 'Create the .interactive archive', function() {

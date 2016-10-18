@@ -5,8 +5,7 @@
 To start developing a new Interactive:
 
 1. Upload the Interactive in Airship.
-2. Get the URL of the Interactive from Viewer.
-3. Use that URL with this tool.
+2. Create a `mfly-interactive.config.json` file at the root of your Interactive.
 
 **Please note that local changes to the Interactive will not update the uploaded Interactive. When finished making changes, you will need to upload the Interactive in Airship again.**
 
@@ -18,10 +17,10 @@ Enter the following in the terminal
 $ npm install -g mfly-interactive
 ```
 
-Run in the folder where the Interactive is located. You can locate the url by navigating to the Interactive in the [web viewer](https://viewer.mediafly.com).
+Run in the folder where the Interactive is located.
 
 ```
-$ mfly-interactive --url https://viewer.mediafly.com/.../index.html
+$ mfly-interactive serve
 ```
 
 ### Option 2: Local install (if you have gulp, grunt, etc. with a static file server)
@@ -39,9 +38,7 @@ Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) 
 
 ```
 var browserSync = require("browser-sync")
-var viewerMiddleware = require('mfly-interactive')({
-	url: 'https://viewer.mediafly.com/.../index.html'
-})
+var viewerMiddleware = require('mfly-interactive')(require('./mfly-interactive.config.json'))
 
 browserSync({
 	files: 'app/**',
@@ -61,27 +58,22 @@ browserSync({
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
 
 ```
-$ mfly-interactive upload --user-id {userId} --password {password} --product-id {productId} --item-id {itemId}
+$ mfly-interactive publish
 ```
-
-Here is how to retrieve the arguments needed for the command above:
-
-- `user-id`: This is the username used to log into Airship.
-- `password`: Password when logging into Airship.
-- `productId`: The ID of your Airship product/content source.  This is the same as the content source slug.
-- `itemId`: This is the ID of the Interactive in Airship.
-
 
 ## Configuring with mfly-interactive.config.json
 
-Instead of supplying command line arguments to mfly-interactive, you can also choose to use a config file. Place the file `mfly-interactive.config.json` at the root of your Interactive next to the `index.html` file. Here are all the properties that should could be included in this file:
+ You can use the config file `mfly-interactive.config.json` to configure the behavior of this tool. Here is an example config file:
 
 ```
 {
-	"url": "https://viewer.mediafly.com/interactives/interactive/9cf282320e6340ee8b830e5376d54531product236750/index.html",
 	"userId": "john@doe.com",
-	"password": "password",
-	"itemId": "{AIRSHIP ITEM ID}"
+	"password": "secret",
+	"itemId": "{AIRSHIP ITEM ID}",
+	"remoteIP": "192.168.1.160:3000",
+	"mcode": "interactives",
+	"slug": "{VIEWER ITEM SLUG}",
+	"productId": "{PRODUCT ID}"
 }
 ```
 
