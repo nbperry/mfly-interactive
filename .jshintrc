@@ -3,21 +3,21 @@
   "camelcase": true,
   "curly": true,
   "eqeqeq": true,
+  "esnext": true,
   "forin": true,
   "freeze": true,
   "immed": true,
   "indent": 1,
-  "latedef": true,
+  "jasmine": true,
   "newcap": true,
   "noarg": true,
   "noempty": true,
+  "node": true,
   "nonbsp": true,
   "nonew": true,
-  "plusplus": true,
   "undef": true,
   "unused": true,
   "predef": [
-    "module",
-  	"require"
+    "_"
   ]
 }
