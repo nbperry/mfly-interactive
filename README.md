@@ -1,5 +1,13 @@
 # Mediafly Interactives
 
+## Initialize
+
+Initialize `mfly-interactive` with
+
+	mfly-interactive init
+
+Information collected from questions asked by this command is stored in `mfly-interactive.config.json` at the root of your Interactive. Be sure to add mfly-interactive.config.json to your `.gitignore` file.
+
 ## Developing an Interactive in the browser:
 
 To start developing a new Interactive:
@@ -19,9 +27,9 @@ $ npm install -g mfly-interactive
 
 Run in the folder where the Interactive is located.
 
-```
-$ mfly-interactive serve
-```
+
+	$ mfly-interactive serve
+
 
 ### Option 2: Local install (if you have gulp, grunt, etc. with a static file server)
 
@@ -30,53 +38,46 @@ This package can also be used as a node.js middleware. You can plug in this midd
 
 Enter the following in the terminal
 
-```
-$ npm install mfly-interactive --save-dev
-```
+
+	$ npm install mfly-interactive --save-dev
+
 
 Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) server. The same can be done with any connect server as well. Here, the middleware provided by `mfly-interactive` can be supplied to your server.
 
-```
-var browserSync = require("browser-sync")
-var viewerMiddleware = require('mfly-interactive')(require('./mfly-interactive.config.json'))
 
-browserSync({
-	files: 'app/**',
-	https: true,
-	server: {
-		baseDir: './app',
-		middleware: [
-			viewerMiddleware
-		]
-	}
-})
+	var browserSync = require("browser-sync")
+	var viewerMiddleware = require('mfly-interactive')(require('./mfly-interactive.config.json'))
 
-```
+	browserSync({
+		files: 'app/**',
+		https: true,
+		server: {
+			baseDir: './app',
+			middleware: [
+				viewerMiddleware
+			]
+		}
+	})
 
 ## Publishing an Interactive
 
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
 
-```
-$ mfly-interactive publish
-```
+
+	$ mfly-interactive publish --user-id {Airship User Id} --password {Airship Password}
+
 
 ## Configuring with mfly-interactive.config.json
 
  You can use the config file `mfly-interactive.config.json` to configure the behavior of this tool. Here is an example config file:
 
-```
-{
-	"userId": "john@doe.com",
-	"password": "secret",
-	"itemId": "{AIRSHIP ITEM Id}",
-	"mcode": "{Company Code}",
-	"slug": "{Viewer Item Slug}",
-	"productId": "{Product Id}"
-}
-```
 
-Be sure to add mfly-interactive.config.json to your `.gitignore` file.
+	{
+		"itemId": "{AIRSHIP ITEM Id}",
+		"mcode": "{Company Code}",
+		"slug": "{Viewer Item Slug}",
+		"productId": "{Product Id}"
+	}
 
 ## A note on HTTPS
 Your browser will show a warning about HTTPs. Ignore this warning.
