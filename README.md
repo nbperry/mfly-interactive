@@ -69,13 +69,14 @@ $ mfly-interactive publish
 {
 	"userId": "john@doe.com",
 	"password": "secret",
-	"itemId": "{AIRSHIP ITEM ID}",
-	"remoteIP": "192.168.1.160:3000",
-	"mcode": "interactives",
-	"slug": "{VIEWER ITEM SLUG}",
-	"productId": "{PRODUCT ID}"
+	"itemId": "{AIRSHIP ITEM Id}",
+	"mcode": "{Company Code}",
+	"slug": "{Viewer Item Slug}",
+	"productId": "{Product Id}"
 }
 ```
+
+Be sure to add mfly-interactive.config.json to your `.gitignore` file.
 
 ## A note on HTTPS
 Your browser will show a warning about HTTPs. Ignore this warning.
