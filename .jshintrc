@@ -18,6 +18,7 @@
   "undef": true,
   "unused": true,
   "predef": [
-    "_"
+    "_",
+    "___browserSync___"
   ]
 }

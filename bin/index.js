@@ -46,15 +46,16 @@ function upload() {
 	})
 }
 
-function serve() {
+function serve(argv) {
 	var options = require(configFilePath)
+	options.open = argv.open
 	require('../lib/server')(options)
 }
 
 var argv = require('yargs')
 	.usage('Run the Interactive with the following options.')
-	.command('serve', 'Serves it up', function() {
-		serve()
+	.command('serve', 'Serves it up', function(yargs) {
+		serve(yargs.argv)
 	})
 	.command('init', 'Initialize', function() {
 		init()
