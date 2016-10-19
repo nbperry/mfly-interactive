@@ -32,9 +32,18 @@ function init() {
 	})
 }
 
-function upload(argv) {
-	var options = require(configFilePath)
-	require('../lib/uploader')(argv.userId, argv.password, options.productId, options.itemId)
+function upload() {
+	inquirer.prompt([{
+		name: 'userId',
+		message: 'Enter Airship User Id'  
+	}, {
+		name: 'password',
+		message: 'Enter Airship password',
+		type: 'password'
+	}]).then(function(answers) {
+		var options = require(configFilePath)
+		require('../lib/uploader')(answers.userId, answers.password, options.productId, options.itemId)
+	})
 }
 
 function serve() {
@@ -50,8 +59,8 @@ var argv = require('yargs')
 	.command('init', 'Initialize', function() {
 		init()
 	})
-	.command('publish', 'Create release and upload to Airship', function(yargs) {
-		upload(yargs.argv)
+	.command('publish', 'Create release and upload to Airship', function() {
+		upload()
 	})
 	.command('release', 'Create the .interactive archive', function() {
 		release(err => {

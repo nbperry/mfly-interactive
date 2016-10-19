@@ -64,7 +64,7 @@ Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) 
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
 
 
-	$ mfly-interactive publish --user-id {Airship User Id} --password {Airship Password}
+	$ mfly-interactive publish
 
 
 ## Configuring with mfly-interactive.config.json
