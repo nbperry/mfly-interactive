@@ -19,6 +19,9 @@
   "unused": true,
   "predef": [
     "_",
-    "___browserSync___"
+    "___browserSync___",
+    "mflyCommands",
+    "window",
+    "StackTrace"
   ]
 }
