@@ -4,15 +4,8 @@ var fs = require('fs')
 var chalk = require('chalk')
 var inquirer = require('inquirer')
 var release = require('../lib/release')
-var winston = require('winston')
 var configFilePath = path.join(process.cwd(), 'mfly-interactive.config.json')
-
- winston.add(winston.transports.File, {
- 	level: 'silly',
- 	filename: path.join(process.cwd(), 'logs/all.log'),
- 	maxSize: 10000000,
- 	json: false
- })
+require('../lib/configureWinston')
 
 function init() {
 	inquirer.prompt([{
