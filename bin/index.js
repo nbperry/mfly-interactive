@@ -47,10 +47,6 @@ function upload() {
 	})
 }
 
-function logViewer() {
-	require('../lib/logViewer')
-}
-
 function serve(argv) {
 	var options = require(configFilePath)
 	options.open = argv.open
