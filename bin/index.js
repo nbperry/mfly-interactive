@@ -4,7 +4,9 @@ var fs = require('fs')
 var chalk = require('chalk')
 var inquirer = require('inquirer')
 var release = require('../lib/release')
+require('../lib/updateNotifier')
 var configFilePath = path.join(process.cwd(), 'mfly-interactive.config.json')
+require('../lib/configureWinston')
 
 function init() {
 	inquirer.prompt([{
@@ -46,15 +48,21 @@ function upload() {
 	})
 }
 
-function serve() {
+function serve(argv) {
 	var options = require(configFilePath)
+	options.open = argv.open
 	require('../lib/server')(options)
 }
 
 var argv = require('yargs')
 	.usage('Run the Interactive with the following options.')
-	.command('serve', 'Serves it up', function() {
-		serve()
+	.option('open', {
+		alias: 'o',
+		default: true,
+		type: 'boolean'
+	})
+	.command('serve', 'Serves it up', function(yargs) {
+		serve(yargs.argv)
 	})
 	.command('init', 'Initialize', function() {
 		init()
