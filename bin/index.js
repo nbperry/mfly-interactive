@@ -4,6 +4,7 @@ var fs = require('fs')
 var chalk = require('chalk')
 var inquirer = require('inquirer')
 var release = require('../lib/release')
+require('../lib/updateNotifier')
 var configFilePath = path.join(process.cwd(), 'mfly-interactive.config.json')
 require('../lib/configureWinston')
 
