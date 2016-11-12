@@ -5,7 +5,7 @@ node_js:
   - "4"
 
 script:
-  - node install -g .
+  - npm install -g .
   - mfly-interactive version
 
 cache:
