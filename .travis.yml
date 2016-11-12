@@ -5,7 +5,8 @@ node_js:
   - "4"
 
 script:
-  - node bin/index version
+  - node install -g .
+  - mfly-interactive version
 
 cache:
   directories:
