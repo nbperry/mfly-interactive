@@ -54,12 +54,20 @@ function serve(argv) {
 	require('../lib/server')(options)
 }
 
+function getVersion() {
+	var version = require('../package').version
+	return console.log(`Version: ${chalk.green(version)}`)
+}
+
 var argv = require('yargs')
 	.usage('Run the Interactive with the following options.')
 	.option('open', {
 		alias: 'o',
 		default: true,
 		type: 'boolean'
+	})
+	.command('version', 'Get version', function(yargs) {
+		getVersion()
 	})
 	.command('serve', 'Serves it up', function(yargs) {
 		serve(yargs.argv)
