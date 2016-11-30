@@ -11,7 +11,7 @@ function upload() {
 	require('../lib/uploader')(options.accessToken, options.productId, options.itemId)
 }
 
-function serve(argv) {
+function serve() {
 	var options = require(configFilePath)
 	require('../lib/server')(options)
 }
@@ -21,13 +21,13 @@ function getVersion() {
 	return console.log(`Version: ${chalk.green(version)}`)
 }
 
-var argv = require('yargs')
+require('yargs')
 	.usage('Run the Interactive with the following options.')
-	.command('version', 'Get version', function(yargs) {
+	.command('version', 'Get version', function() {
 		getVersion()
 	})
-	.command('serve', 'Serves it up', function(yargs) {
-		serve(yargs.argv)
+	.command('serve', 'Serves it up', function() {
+		serve()
 	})
 	.command('init', 'Initialize', function() {
 		require('../lib/init')()
