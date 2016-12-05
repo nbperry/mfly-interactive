@@ -46,8 +46,11 @@ Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) 
 
 
 	var browserSync = require("browser-sync")
-	var viewerMiddleware = require('mfly-interactive')(require('./mfly-interactive.config.json'))
-
+	var options = require('./mfly-interactive.config.json')
+	//Viewer slug is required here
+	options.slug = '{VIEWER_SLUG}'
+	var viewerMiddleware = require('mfly-interactive')(options)
+	
 	browserSync({
 		files: 'app/**',
 		https: true,

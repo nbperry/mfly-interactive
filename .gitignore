@@ -28,3 +28,6 @@ node_modules
 
 # App sepcific
 archive.interactive
+
+# Vagrant
+.vagrant
