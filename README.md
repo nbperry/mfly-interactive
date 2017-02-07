@@ -86,7 +86,7 @@ Once you are ready to test the Interactive on other platforms, or if you are rea
 
 ## Explanation for required parameters:
 
-- Airship User ID and Password: Credentials used to log into ![https://airship.mediafly.com](airship.mediafly.com)
+- Airship User ID and Password: Credentials used to log into [https://airship.mediafly.com](airship.mediafly.com)
 - Airship Item Id: This is the Id for the Interactive in Airship. You can locate it by navigating to the item in Airship and extractig it from the URL. In the following example, the Airship item Id is 0-265955-265962. ![](airship-item-id.JPG)
 - Company Code: Company code used in Viewer.
 
