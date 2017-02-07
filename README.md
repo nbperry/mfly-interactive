@@ -50,16 +50,9 @@ Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) 
 ## Initialize
 
 1. Upload the Interactive into Airship
-2. Run `mfly-interactive init`. This command will create `mfly-interactive.config.json` at the root of your Interactive.
+2. Run `mfly-interactive init`. See [Explanation for required parameters](#Explanation for required parameters) for details on how to find information requested by this command.
 
-Note: `mfly-interactive.config.json` contains Airship user specific information. Be sure to add it to your `.gitignore` file.
-
-## Developing an Interactive in the browser:
-
-To start developing a new Interactive:
-
-1. Upload the Interactive in Airship.
-2. Create a `mfly-interactive.config.json` file at the root of your Interactive.
+Note: The `init` command creates `mfly-interactive.config.json` at the root of your Interactive. `mfly-interactive.config.json` contains Airship user specific information. Be sure to add it to your `.gitignore` file.
 
 **Please note that local changes to the Interactive will not update the uploaded Interactive. When finished making changes, you will need to upload the Interactive in Airship again.**
 
@@ -84,7 +77,6 @@ Now you are set to test the Interactive on iOS. Open the "DEVELOPER!" modal by f
 
 ![](ios-setup.gif)
 
-
 ## Publishing an Interactive
 
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
@@ -92,6 +84,12 @@ Once you are ready to test the Interactive on other platforms, or if you are rea
 
 	$ mfly-interactive publish
 
+## Explanation for required parameters:
+
+Airship User ID and Password: Credentials used to log into ![https://airship.mediafly.com](airship.mediafly.com)
+Airship Item Id: This is the Id for the Interactive in Airship. You can locate it by navigating to the item in Airship and extractig it from the URL. Example:
+![](airship-item-id.JPG)
+Company Code: Your company code used in Viewer.
 
 ## Reconfiguring
 
