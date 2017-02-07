@@ -56,7 +56,7 @@ Note: The `init` command creates `mfly-interactive.config.json` at the root of y
 
 **Please note that local changes to the Interactive will not update the uploaded Interactive. When finished making changes, you will need to upload the Interactive in Airship again.**
 
-## Testing on iOS
+## Testing Interactives on iOS (Availability: iOS (662))
 
 mfly-interactive can speed up testing of Interactives on iOS. Specifically it provides the following 2 features:
 
