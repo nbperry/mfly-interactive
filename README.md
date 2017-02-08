@@ -12,9 +12,9 @@ $ npm install -g mfly-interactive
 
 Run in the folder where the Interactive is located.
 
-
-	$ mfly-interactive serve
-
+```
+$ mfly-interactive serve
+```
 
 ### Option 2: Local install (if you have gulp, grunt, etc. with a static file server)
 
@@ -23,29 +23,31 @@ This package can also be used as a node.js middleware. You can plug in this midd
 
 Enter the following in the terminal
 
-
-	$ npm install mfly-interactive --save-dev
-
+```
+$ npm install mfly-interactive --save-dev
+```
 
 Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) server. The same can be done with any connect server as well. Here, the middleware provided by `mfly-interactive` can be supplied to your server.
 
 
-	var browserSync = require("browser-sync")
-	var options = require('./mfly-interactive.config.json')
-	//Viewer slug is required here
-	options.slug = '{VIEWER_SLUG}'
-	var viewerMiddleware = require('mfly-interactive')(options)
+```
+var browserSync = require("browser-sync")
+var options = require('./mfly-interactive.config.json')
+//Viewer slug is required here
+options.slug = '{VIEWER_SLUG}'
+var viewerMiddleware = require('mfly-interactive')(options)
 	
-	browserSync({
-		files: 'app/**',
-		https: true,
-		server: {
-			baseDir: './app',
-			middleware: [
-				viewerMiddleware
-			]
-		}
-	})
+browserSync({
+	files: 'app/**',
+	https: true,
+	server: {
+		baseDir: './app',
+		middleware: [
+			viewerMiddleware
+		]
+	}
+})
+```
 
 ## Initialize
 
@@ -81,8 +83,9 @@ Now you are set to test the Interactive on iOS. Open the "DEVELOPER!" modal by f
 
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
 
-
-	$ mfly-interactive publish
+```
+$ mfly-interactive publish
+```
 
 ## Explanation for Required Parameters
 
