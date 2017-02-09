@@ -79,6 +79,15 @@ Now you are set to test the Interactive on iOS. Open the "DEVELOPER!" modal by f
 
 ![](ios-setup.gif)
 
+## Packaging an Interactive
+
+While the `publish` command will package and upload the Interactive, `mfly-interactive` can only package the Interactive as well by running:
+
+```
+$ mfly-interactive release
+```
+
+
 ## Publishing an Interactive
 
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
