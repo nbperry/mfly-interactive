@@ -5,6 +5,7 @@
   "main": "lib/proxy.js",
   "author": "Nachiket Mehta",
   "license": "ISC",
+  "engines": { "node" : ">=6.9.5" },
   "dependencies": {
     "browser-sync": "^2.12.5",
     "chalk": "^1.1.3",
