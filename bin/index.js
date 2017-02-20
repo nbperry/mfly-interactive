@@ -36,7 +36,7 @@ require('yargs')
 		upload()
 	})
 	.command('release', 'Create the .interactive archive', function() {
-		release(err => {
+		release(function(err) {
 			if (err) {
 				console.log(err)
 			}
