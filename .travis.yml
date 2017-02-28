@@ -6,8 +6,8 @@ node_js:
   - "4"
 
 script:
-  - npm install -g .
   - node bin/index version
+  - npm test
 
 cache:
   directories:
