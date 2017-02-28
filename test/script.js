@@ -10,7 +10,7 @@ function versionTest() {
 		if (error) {
 			assert.fail(error, null, 'error getting version' + stderr)
 		}
-		assert(new RegExp(/Version: \d+.\d+.\d+/).test(stdout), stdout + ' is invalid')
+		assert(new RegExp(/Version \d+.\d+.\d+/).test(stdout), stdout + ' is invalid')
 	});	
 }
 
