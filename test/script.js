@@ -6,7 +6,7 @@ function canaryTest() {
 }
 
 function versionTest() {
-	exec('node bin/index version', function(error, stdout, stderr) {
+	exec('node bin/index version', (error, stdout, stderr) => {
 		if (error) {
 			assert.fail(error, null, 'error getting version' + stderr)
 		}
