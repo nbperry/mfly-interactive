@@ -1,12 +1,13 @@
 language: node_js
 node_js:
+  - "7"
   - "6"
   - "5"
   - "4"
 
 script:
   - npm install -g .
-  - mfly-interactive version
+  - node bin/index version
 
 cache:
   directories:
