@@ -59,13 +59,15 @@ describe('mfly-interactive', () => {
 			})
 		}
 			
-		transformHtml()
-		exec('rm test/app/app.interactive', () => {
-			exec('node ../../bin/index publish', { cwd: 'test/app' }, () => {
-				//verify interactive was published
-				waitUntilAssetStateIsProcessed(() => {
-					//now verify the change to index.html was actually extracted to S3
-					verifyInteractivePublished(done)
+		waitUntilAssetStateIsProcessed(() => {
+			transformHtml()
+			exec('rm test/app/app.interactive', () => {
+				exec('node ../../bin/index publish', { cwd: 'test/app' }, () => {
+					//verify interactive was published
+					waitUntilAssetStateIsProcessed(() => {
+						//now verify the change to index.html was actually extracted to S3
+						verifyInteractivePublished(done)
+					})
 				})
 			})
 		})
