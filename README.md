@@ -1,4 +1,4 @@
-# Mediafly Interactives
+# Mediafly Interactives [![Build Status](https://travis-ci.org/mediafly/mfly-interactive.svg?branch=master)](https://travis-ci.org/mediafly/mfly-interactive)
 
 ## Install
 
