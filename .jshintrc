@@ -9,6 +9,7 @@
   "immed": true,
   "indent": 1,
   "jasmine": true,
+  "mocha": true,
   "newcap": true,
   "noarg": true,
   "noempty": true,
