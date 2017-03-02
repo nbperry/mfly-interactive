@@ -1,4 +1,5 @@
 var _ = require('lodash')
+var fs = require('fs')
 var assert = require('assert')
 var request = require('request')
 var exec = require('child_process').exec
@@ -10,7 +11,42 @@ var getItemAssetState = require('../lib/item').getItemAssetState
 var uuid = require('uuid/v1')
 var uniqueId = uuid()
 
+var baseConfig = {
+    "filename": "app.interactive",
+    "accessToken": "63b26f29837744e6adb23fce54180659",
+    "mcode": "interactives",
+    "productId": "9cf282320e6340ee8b830e5376d54531"
+}
+
+//A map of config to use for a specific node version
+//Travis runs tests in parallel so we have to test
+//different items in Airship/Viewer to avoid conflicts
+var nodeVersionConfigMap = {
+	'4': {
+		itemId: '0-326822-326823',
+		slug: '9cf282320e6340ee8b830e5376d54531product326823'
+	},
+	'5': {
+		itemId: '0-326822-327858',
+		slug: '9cf282320e6340ee8b830e5376d54531product327858'
+	},
+	'6': {
+		itemId: '0-326822-327859',
+		slug: '9cf282320e6340ee8b830e5376d54531product327859'
+	},
+	'7': {
+		itemId: '0-326822-327857',
+		slug: '9cf282320e6340ee8b830e5376d54531product327857'
+	},
+}
+
 describe('mfly-interactive', () => {
+	before(function(done) {
+		//modify mfly-interactive.config.json
+		var config = _.assign(baseConfig, nodeVersionConfigMap[process.version[1]])
+		fs.writeFile('test/app/mfly-interactive.config.json', JSON.stringify(config, null, 4), done)
+	})
+	
 	it('Canary test should pass', () => {
 		assert.equal(true, true, 'Canary test should pass')
 	})
