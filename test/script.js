@@ -6,7 +6,6 @@ var exec = require('child_process').exec
 var existsSync = require('fs').existsSync
 var readFileSync = require('fs').readFileSync
 var writeFileSync = require('fs').writeFileSync
-var config = require('./app/mfly-interactive.config')
 var getItemAssetState = require('../lib/item').getItemAssetState
 var uuid = require('uuid/v1')
 var uniqueId = uuid()
@@ -40,14 +39,17 @@ var nodeVersionConfigMap = {
 	},
 }
 
-describe('mfly-interactive', () => {
-	before(function(done) {
+describe('mfly-interactive', function() {
+	var config
+	before(function() {
 		//modify mfly-interactive.config.json
-		var config = _.assign(baseConfig, nodeVersionConfigMap[process.version[1]])
-		fs.writeFile('test/app/mfly-interactive.config.json', JSON.stringify(config, null, 4), done)
+		var nodeSpecificConfig = _.assign(baseConfig, nodeVersionConfigMap[process.version[1]])
+		fs.writeFileSync('test/app/mfly-interactive.config.json', JSON.stringify(nodeSpecificConfig, null, 4))
+		config = require('./app/mfly-interactive.config')
 	})
 	
 	it('Canary test should pass', () => {
+		assert(config, 'Config should exist')
 		assert.equal(true, true, 'Canary test should pass')
 	})
 
@@ -95,21 +97,15 @@ describe('mfly-interactive', () => {
 			})
 		}
 			
-		waitUntilAssetStateIsProcessed(() => {
-			transformHtml()
-			exec('rm test/app/app.interactive', () => {
-				exec('node ../../bin/index publish', { cwd: 'test/app' }, () => {
-					//verify interactive was published
-					waitUntilAssetStateIsProcessed(() => {
-						//now verify the change to index.html was actually extracted to S3
-						verifyInteractivePublished(done)
-					})
+		transformHtml()
+		exec('rm test/app/app.interactive', () => {
+			exec('node ../../bin/index publish', { cwd: 'test/app' }, () => {
+				//verify interactive was published
+				waitUntilAssetStateIsProcessed(() => {
+					//now verify the change to index.html was actually extracted to S3
+					verifyInteractivePublished(done)
 				})
 			})
 		})
 	})
 })
-
-
-// function publishTest() {
-// }
