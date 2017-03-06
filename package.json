@@ -20,6 +20,7 @@
     "lodash": "^4.17.4",
     "opn": "^4.0.2",
     "q": "1.4.1",
+    "random-words": "0.0.1",
     "request": "^2.72.0",
     "update-notifier": "^1.0.2",
     "uuid": "^3.0.1",
