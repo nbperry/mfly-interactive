@@ -8,7 +8,7 @@ require('../lib/configureWinston')
 
 function upload() {
 	var options = require(configFilePath)
-	require('../lib/uploader')(options.accessToken, options.productId, options.itemId)
+	require('../lib/publish')(options.accessToken, options.productId, options.itemId)
 }
 
 function serve() {
