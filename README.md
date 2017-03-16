@@ -96,6 +96,13 @@ Once you are ready to test the Interactive on other platforms, or if you are rea
 $ mfly-interactive publish
 ```
 
+## Open Interactive in Airship or Viewer
+
+You can navigate to the Interactive in Airship or Viewer by using the `open` command by running:
+
+	mfly-interactive open airship
+	mfly-interactive open viewer
+
 ## Explanation for Required Parameters
 
 - Airship User ID and Password: Credentials used to log into [https://airship.mediafly.com](airship.mediafly.com)
