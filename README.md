@@ -6,15 +6,11 @@
 
 Enter the following in the terminal
 
-```
-$ npm install -g mfly-interactive
-```
+	$ npm install -g mfly-interactive
 
 Run in the folder where the Interactive is located.
 
-```
-$ mfly-interactive serve
-```
+	$ mfly-interactive serve
 
 ### Option 2: Local install (if you have gulp, grunt, etc. with a static file server)
 
@@ -23,31 +19,27 @@ This package can also be used as a node.js middleware. You can plug in this midd
 
 Enter the following in the terminal
 
-```
-$ npm install mfly-interactive --save-dev
-```
+	$ npm install mfly-interactive --save-dev
 
 Here is an example of how to set up a [BrowserSync](http://www.browsersync.io/) server. The same can be done with any connect server as well. Here, the middleware provided by `mfly-interactive` can be supplied to your server.
 
 
-```
-var browserSync = require("browser-sync")
-var options = require('./mfly-interactive.config.json')
-//Viewer slug is required here
-options.slug = '{VIEWER_SLUG}'
-var viewerMiddleware = require('mfly-interactive')(options)
-	
-browserSync({
-	files: 'app/**',
-	https: true,
-	server: {
-		baseDir: './app',
-		middleware: [
-			viewerMiddleware
-		]
-	}
-})
-```
+	var browserSync = require("browser-sync")
+	var options = require('./mfly-interactive.config.json')
+	//Viewer slug is required here
+	options.slug = '{VIEWER_SLUG}'
+	var viewerMiddleware = require('mfly-interactive')(options)
+		
+	browserSync({
+		files: 'app/**',
+		https: true,
+		server: {
+			baseDir: './app',
+			middleware: [
+				viewerMiddleware
+			]
+		}
+	})
 
 ## Initialize
 
@@ -83,18 +75,20 @@ Now you are set to test the Interactive on iOS. Open the "DEVELOPER!" modal by f
 
 While the `publish` command will package and upload the Interactive, `mfly-interactive` can only package the Interactive as well by running:
 
-```
-$ mfly-interactive release
-```
-
+	$ mfly-interactive release
 
 ## Publishing an Interactive
 
 Once you are ready to test the Interactive on other platforms, or if you are ready to publish it for your users, you can publish it by using the following command.
 
-```
-$ mfly-interactive publish
-```
+	$ mfly-interactive publish
+
+## Open Interactive in Airship or Viewer
+
+You can navigate to the Interactive in Airship or Viewer by using the `open` command by running:
+
+	mfly-interactive open airship
+	mfly-interactive open viewer
 
 ## Explanation for Required Parameters
 
