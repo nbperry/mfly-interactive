@@ -52,6 +52,8 @@ Note: The `init` command creates `mfly-interactive.config.json` at the root of y
 
 ## Testing Interactives on iOS (Availability: iOS (662))
 
+**Note: Only the Interactives that leverage the new HTTP scheme are supported.**
+
 mfly-interactive can speed up testing of Interactives on iOS. Specifically it provides the following 2 features:
 
 1. Interactives will live reload in the iOS app upon file save.
