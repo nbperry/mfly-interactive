@@ -17,39 +17,18 @@ var baseConfig = {
     "productId": "9cf282320e6340ee8b830e5376d54531"
 }
 
-//A map of config to use for a specific node version
-//Travis runs tests in parallel so we have to test
-//different items in Airship/Viewer to avoid conflicts
-var nodeVersionConfigMap = {
-	'4': {
-		itemId: '0-326822-326823',
-		slug: '9cf282320e6340ee8b830e5376d54531product326823'
-	},
-	'5': {
-		itemId: '0-326822-327858',
-		slug: '9cf282320e6340ee8b830e5376d54531product327858'
-	},
-	'6': {
-		itemId: '0-326822-327859',
-		slug: '9cf282320e6340ee8b830e5376d54531product327859'
-	},
-	'7': {
-		itemId: '0-326822-327857',
-		slug: '9cf282320e6340ee8b830e5376d54531product327857'
-	},
-}
-
 describe('mfly-interactive', function() {
 	var config
 	before(function() {
 		//modify mfly-interactive.config.json
-		var nodeSpecificConfig = _.assign(baseConfig, nodeVersionConfigMap[process.version[1]])
-		fs.writeFileSync('test/app/mfly-interactive.config.json', JSON.stringify(nodeSpecificConfig, null, 4))
-		config = require('./app/mfly-interactive.config')
+		config = require('./app/mfly-interactive-node' + process.version[1] + '.config')
 	})
 	
 	it('Canary test should pass', () => {
 		assert(config, 'Config should exist')
+		assert.equal(config.mcode, 'interactives', 'mcode should be "interactives"')
+		assert.equal(config.accessToken, '63b26f29837744e6adb23fce54180659', 'accessToken should a hardcoded long lived token')
+		assert.equal(config.productId, '9cf282320e6340ee8b830e5376d54531', 'productId should a interactives conent source productId')
 		assert.equal(true, true, 'Canary test should pass')
 	})
 
@@ -69,7 +48,7 @@ describe('mfly-interactive', function() {
 		})
 	})
 
-	it('Should publish an interactive', function(done) {
+	it.skip('Should publish an interactive', function(done) {
 		this.timeout(5 * 60 * 1000)
 		function transformHtml() {
 			var html = readFileSync('test/app/index.test.html', { encoding: 'ascii' })
