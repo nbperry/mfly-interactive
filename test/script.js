@@ -40,7 +40,7 @@ describe('mfly-interactive', function() {
 		})
 	})
 
-	it.skip('Should publish an interactive', function(done) {
+	it('Should publish an interactive', function(done) {
 		this.timeout(5 * 60 * 1000)
 		function transformHtml() {
 			var html = readFileSync('test/app/index.test.html', { encoding: 'ascii' })
@@ -70,7 +70,7 @@ describe('mfly-interactive', function() {
 			
 		transformHtml()
 		exec('rm test/app/app.interactive', () => {
-			exec('node ../../bin/index publish', { cwd: 'test/app' }, () => {
+			exec('node ../../bin/index publish --config mfly-interactive-node' + process.version[1] + '.config.json', { cwd: 'test/app' }, () => {
 				//verify interactive was published
 				waitUntilAssetStateIsProcessed(() => {
 					//now verify the change to index.html was actually extracted to S3
