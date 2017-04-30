@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 var path = require('path')
+var yargs = require('yargs')
 var opn = require('opn')
 var chalk = require('chalk')
 var release = require('../lib/release')
 require('../lib/updateNotifier')
-var configFilePath = path.join(process.cwd(), 'mfly-interactive.config.json')
 require('../lib/configureWinston')
 
 function upload() {
+	var configFilePath = path.join(process.cwd(), yargs.argv.config)
 	var options = require(configFilePath)
 	require('../lib/publish')(options.accessToken, options.productId, options.itemId)
 }
 
 function serve() {
+	var configFilePath = path.join(process.cwd(), yargs.argv.config)
 	var options = require(configFilePath)
 	require('../lib/server')(options)
 }
@@ -23,6 +25,7 @@ function getVersion() {
 }
 
 function openInAirship() {
+	var configFilePath = path.join(process.cwd(), yargs.argv.config)
 	var options = require(configFilePath)
 	var itemId = options.itemId
 	var mcode = options.mcode
@@ -31,6 +34,7 @@ function openInAirship() {
 }
 
 function openInViewer() {
+	var configFilePath = path.join(process.cwd(), yargs.argv.config)
 	var options = require(configFilePath)
 	var slug = options.slug
 	var mcode = options.mcode
@@ -38,8 +42,13 @@ function openInViewer() {
 	opn(`https://viewer.mediafly.com/${mcode}/redirect?slug=${slug}`, { wait: false })
 }
 
-require('yargs')
+yargs
 	.usage('Run the Interactive with the following options.')
+	.option('config', {
+		alias: 'c',
+		description: 'Name of the config file to use',
+		default: 'mfly-interactive.config.json'
+	})
 	.command('version', 'Get version', function() {
 		getVersion()
 	})
