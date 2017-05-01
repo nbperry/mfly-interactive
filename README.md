@@ -92,7 +92,7 @@ You can navigate to the Interactive in Airship or Viewer by using the `open` com
 	mfly-interactive open airship
 	mfly-interactive open viewer
 
-## Using multiple config files (requires v1.7.0)
+## Using multiple config files (requires v1.7.1)
 
 When you are using build tools such as Grunt, or Gulp, and compiling your single page application to a folder such as `dist`, you may not want the `mfly-interactive.config.json` file in your `dist` folder. 
 This folder could be deleted and recreated during a file watch trigger that recompiles the whole app. In this case, you can put your config file in the parent folder of the `dist` folder, and point `mfly-interactive` at that config file.
