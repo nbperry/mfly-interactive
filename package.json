@@ -1,6 +1,6 @@
 {
   "name": "mfly-interactive",
-  "version": "1.7.2",
+  "version": "1.8.0",
   "description": "Allows local development of interactives using real data.",
   "main": "lib/proxy.js",
   "author": "Nachiket Mehta",
