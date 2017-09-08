@@ -13,6 +13,12 @@ function upload() {
 	require('../lib/publish')(options.accessToken, options.productId, options.itemId)
 }
 
+function postReleaseUpload(){
+	var configFilePath = path.join(process.cwd(), yargs.argv.config)
+	var options = require(configFilePath)
+	require('../lib/publish').publishWithoutRelease(options.accessToken, options.productId, options.itemId)
+}
+
 function serve() {
 	var configFilePath = path.join(process.cwd(), yargs.argv.config)
 	var options = require(configFilePath)
@@ -60,6 +66,9 @@ yargs
 	})
 	.command('publish', 'Create release and upload to Airship', function() {
 		upload()
+	})
+	.command('postReleasePublish', 'Upload an already created release to Airship', function(){
+		postReleaseUpload()
 	})
 	.command('open', 'open item in', function(yargs) {
 		return yargs
